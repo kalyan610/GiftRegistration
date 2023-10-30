@@ -1,0 +1,170 @@
+@import '~@fluentui/react/dist/sass/References.scss';
+
+.giftRegistration {
+  overflow: hidden;
+  padding: 1em;
+  color: "[theme:bodyText, default: #323130]";
+  color: var(--bodyText);
+  &.teams {
+    width: 330px;
+    height: 45px;
+    
+    font-size: medium;
+  
+    font-family: "Cambria";
+  
+    font-weight: $ms-font-weight-regular;
+  
+
+
+  }
+}
+
+.welcome {
+  text-align: center;
+  font-size: 80px;
+}
+
+.welcomeImage {
+  width: 100%;
+  max-width: 420px;
+}
+
+.Divsection
+{
+
+  padding:10px;
+
+
+}
+
+.HeadLable {
+  font-size: 18px;
+ font-family: Cambria;
+
+}
+
+.recolorss
+{
+
+  color: #FF0000;
+}
+
+.onlyFont
+{
+
+  font-family: "Cambria";
+  font-size: medium;
+
+}
+
+.boxsize
+{
+
+ 
+
+  width: 90%;
+
+  height:25px;
+
+  font-size: medium;
+
+  font-family: "Cambria";
+
+  font-weight: $ms-font-weight-regular;
+
+}
+
+.Pepsize
+{
+
+ 
+
+  width: 50%;
+
+  height:15px;
+
+  font-size: medium;
+
+  font-family: "Cambria";
+
+  font-weight: $ms-font-weight-regular;
+
+}
+
+
+
+
+.links {
+  width: 30%;
+
+  height:25px;
+
+  font-size: medium;
+
+  font-family: "Cambria";
+
+  font-weight: $ms-font-weight-regular;
+}
+
+
+
+.labelsFonts
+{
+
+  font-size: 14px;
+
+  font-family: Cambria;
+
+ 
+}
+
+.coststyle
+
+{
+
+
+  font-family: "Cambria";
+  font-size: 18;
+  border: 1px solid green;
+ 
+  
+  
+}
+
+.padcss
+{
+
+  padding-top: 10px;
+
+}
+
+.boxsizeMain
+{
+
+  width: 40%;
+
+  height:25px;
+
+  font-size: medium;
+
+  font-family: "Cambria";
+
+  font-weight: $ms-font-weight-regular;
+
+}
+
+
+.textAreacss
+{
+
+  width: 330px;
+  height: 45px;
+  
+  font-size: medium;
+
+  font-family: "Cambria";
+
+  font-weight: $ms-font-weight-regular;
+
+}

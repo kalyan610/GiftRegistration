@@ -1,0 +1,21 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "16.19.1",
+    "sdksVersions": {
+      "@microsoft/microsoft-graph-client": "3.0.2",
+      "@microsoft/teams-js": "2.4.1"
+    },
+    "version": "1.16.1",
+    "libraryName": "gift-registration",
+    "libraryId": "2b76a91a-d8d9-4861-adc4-414caaf41857",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "GiftRegistration",
+    "solutionShortDescription": "GiftRegistration description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}
