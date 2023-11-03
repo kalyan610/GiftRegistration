@@ -58,6 +58,7 @@ let CountryName='';
 
 let CurrencyValue1='';
 
+var  MySelectedVal:any;
 
 export interface IGiftRegistartion
 {
@@ -124,6 +125,9 @@ export interface IGiftRegistartion
   choiceValues: string[];
   Mycheckbox:boolean;
   ReqCurrval:String;
+  ReviewerComments:string;
+
+  divhidemonth:boolean;
 
 }
 
@@ -196,7 +200,9 @@ export default class GiftRegistration extends React.Component<IGiftRegistrationP
      AttachmentFiles:[],
      choiceValues:[],
      Mycheckbox:false,
-     ReqCurrval:""
+     ReqCurrval:"",
+     ReviewerComments:"",
+     divhidemonth:false
 
      };
 
@@ -286,6 +292,19 @@ export default class GiftRegistration extends React.Component<IGiftRegistrationP
     private  handleChange2() {
       this.setState({
         Mycheckbox: !this.state.Mycheckbox})
+
+        if(this.state.Mycheckbox)
+        {
+
+        this.setState({divhidemonth: false})
+
+        }
+
+        else
+        {
+
+          this.setState({divhidemonth: true})
+        }
     }
     
   
@@ -505,6 +524,13 @@ export default class GiftRegistration extends React.Component<IGiftRegistrationP
 
     }
 
+    private changeReviewrcomments(data: any): void {
+
+      this.setState({ ReviewerComments: data.target.value });
+
+
+    }
+
      
     private hadleBussinessUnit(event: React.FormEvent<HTMLDivElement>, item: IDropdownOption): void {
 
@@ -547,16 +573,18 @@ export default class GiftRegistration extends React.Component<IGiftRegistrationP
     
     this.setState({ MyGiftRegistrationValue:item.key });
 
-    
+    MySelectedVal=item.key;
 
+   
     if(item.key=='1')
       {
-      this.setState({divhide:'receive'})
+        this.setState({divhide:'Gave'})
       }
       else
       {
 
-      this.setState({divhide:'Gave'})
+     
+      this.setState({divhide:'receive'})
       }
   
       
@@ -1061,7 +1089,7 @@ public  getParam1( name:any )
         alert('Please select gift registry value')
       }
 
-      if(this.state.MyGiftRegistrationValue=='1')
+      if(MySelectedVal=='2')
       {
         
 
@@ -1164,8 +1192,6 @@ let FinalRequestDelDate=month1+'/'+this.state.dtgiftrecieved.getDate() +'/' +yea
 
           this._service.SaveRecived(
 
-         
-
           this.state.yourName,
           this.state.yourTitle,
           this.state.MyBussinessUnitValue,
@@ -1184,6 +1210,7 @@ let FinalRequestDelDate=month1+'/'+this.state.dtgiftrecieved.getDate() +'/' +yea
           this.state.MyGiftRegistrationValue,
           CountryName,
           this.state.ReqCurrval,
+          
 
           
           myfiles).then(function (data:any)
@@ -1204,7 +1231,7 @@ let FinalRequestDelDate=month1+'/'+this.state.dtgiftrecieved.getDate() +'/' +yea
 
       }
 
-      else if(this.state.MyGiftRegistrationValue=='2')
+      else if(MySelectedVal=='1')
       {
     
         if(this.state.Givename=='')
@@ -1339,6 +1366,7 @@ let FinalRequestDelDate1=month1+'/'+this.state.dtgiftgiven.getDate() +'/' +year1
           CountryName,
           CurrencyValue1,
           
+          
             myfiles).then(function (data:any)
           {
       
@@ -1391,7 +1419,7 @@ let FinalRequestDelDate1=month1+'/'+this.state.dtgiftgiven.getDate() +'/' +year1
       {
 
     
-        this._service.updateGiftRegistryGiven(itemId,(this.state.ReviewerNameId == null ? 0:this.state.ReviewerNameId.Id),this.state.myRiskoptions,(this.state.signoffNameId == null ? 0:this.state.signoffNameId.Id)).then(function (data:any)
+        this._service.updateGiftRegistryGiven(itemId,(this.state.ReviewerNameId == null ? 0:this.state.ReviewerNameId.Id),this.state.myRiskoptions,(this.state.signoffNameId == null ? 0:this.state.signoffNameId.Id),this.state.ReviewerComments).then(function (data:any)
         {
       
           alert('Record updated successfully');
@@ -1405,7 +1433,7 @@ let FinalRequestDelDate1=month1+'/'+this.state.dtgiftgiven.getDate() +'/' +year1
       {
 
     
-        this._service.updateGiftRegistryReceived(itemId,(this.state.ReviewerNameId == null ? 0:this.state.ReviewerNameId.Id),this.state.myRiskoptions,(this.state.signoffNameId == null ? 0:this.state.signoffNameId.Id)).then(function (data:any)
+        this._service.updateGiftRegistryReceived(itemId,(this.state.ReviewerNameId == null ? 0:this.state.ReviewerNameId.Id),this.state.myRiskoptions,(this.state.signoffNameId == null ? 0:this.state.signoffNameId.Id),this.state.ReviewerComments).then(function (data:any)
         {
       
           alert('Record updated successfully');
@@ -2097,6 +2125,17 @@ let FinalRequestDelDate1=month1+'/'+this.state.dtgiftgiven.getDate() +'/' +year1
                   ref={c => (this.ppl = c)} 
                   resolveDelay={1000} />  
 </div>
+<br></br>
+
+{this.state.divhidemonth == true &&  
+
+<div className={styles.Divsection}> 
+<b><label className={styles.labelsFonts}>Reviewer Comments</label></b><br/><br/>
+<textarea id="ReviewerComments" value={this.state.ReviewerComments} onChange={this.changeReviewrcomments.bind(this)} className={styles.boxsize1}></textarea>
+</div>
+
+}
+
 
 </Stack><br></br>
 <PrimaryButton text="Approve" onClick={this.OnBtnClickApprove.bind(this)} styles={stackButtonStyles} className={styles.welcomeImage}/><br></br>

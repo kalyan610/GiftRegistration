@@ -32,8 +32,8 @@ public async test123():Promise<any>
 
     this.SaveRecived('','','','','','','','','','','','','','','','','','','');
     this.SaveGiven('','','','','','','','','','','','','','','','','','','');
-    this.updateGiftRegistryReceived(2,"","","");
-    this.updateGiftRegistryGiven(2,"","","");
+    this.updateGiftRegistryReceived(2,"","","","");
+    this.updateGiftRegistryGiven(2,"","","","");
  
 }
 
@@ -54,7 +54,7 @@ public async test123():Promise<any>
     public async GetAllgiftregistries():Promise<any>
     {
  
-     return await sp.web.lists.getByTitle("GiftRegistry").items.select('Title','ID').expand().get().then(function (data:any) {
+     return await sp.web.lists.getByTitle("GiftRegistry").items.select('Title','ID','RequestType').expand().get().then(function (data:any) {
  
      return data;
  
@@ -103,7 +103,7 @@ public async test123():Promise<any>
         try
         {
 
-          alert(MyCurrencyValue);
+         
 
           let file=acceptedFiles;
     
@@ -188,7 +188,6 @@ public async test123():Promise<any>
         GiftRegistryval:string,
         CountrynameVal:string,
         MyCurrencyVal:string,
-
         acceptedFiles:any)  {
 
         let Myval='Completed';
@@ -318,7 +317,7 @@ public async test123():Promise<any>
         }
     }
 
-    private async updateGiftRegistryReceived(MyRecordId:number,MyReviewrSign:string,MyRiskReviewPolicy:string,MySignOff:string)
+    private async updateGiftRegistryReceived(MyRecordId:number,MyReviewrSign:string,MyRiskReviewPolicy:string,MySignOff:string,MyReviewerComments:string)
     {
 
       let MyListTitle='Gift Registry Submissions Received';
@@ -335,7 +334,8 @@ public async test123():Promise<any>
         RiskReviewerId:MyReviewrSign,
         RiskReviewPolicy:MyRiskReviewPolicy,
         SignOffId:MySignOff,
-        Status:'Approved'       
+        Status:'Approved' ,
+        ReviewerComments:MyReviewerComments      
         
     }).then (async r => {
 
@@ -353,7 +353,7 @@ public async test123():Promise<any>
 
     }
 
-    private async updateGiftRegistryGiven(MyRecordId:number,MyReviewrSign:string,MyRiskReviewPolicy:string,MySignOff:string)
+    private async updateGiftRegistryGiven(MyRecordId:number,MyReviewrSign:string,MyRiskReviewPolicy:string,MySignOff:string,MyReviewerComments:string)
     {
 
       let MyListTitle='Gift Registry Submissions Given';
@@ -365,12 +365,13 @@ public async test123():Promise<any>
         let Varmyval = await list.items.getById(MyRecordId).update({
 
         //Emp Update
-        
+      
         Title:"Updated by Approver",
         RiskReviewerId:MyReviewrSign,
         RiskReviewPolicy:MyRiskReviewPolicy,
         SignOffId:MySignOff,
-        Status:'Approved'       
+        Status:'Approved',
+      ReviewerComments:MyReviewerComments      
         
     }).then (async r => {
 
