@@ -293,18 +293,7 @@ export default class GiftRegistration extends React.Component<IGiftRegistrationP
       this.setState({
         Mycheckbox: !this.state.Mycheckbox})
 
-        if(this.state.Mycheckbox)
-        {
-
-        this.setState({divhidemonth: false})
-
-        }
-
-        else
-        {
-
-          this.setState({divhidemonth: true})
-        }
+        
     }
     
   
@@ -662,6 +651,19 @@ export default class GiftRegistration extends React.Component<IGiftRegistrationP
     private hadleRiskYesNoGiven(event: React.FormEvent<HTMLDivElement>, item: IDropdownOption): void {
 
       this.setState({ myRiskoptions:item.key });
+
+      if(item.key=='Yes')
+      {
+
+      this.setState({divhidemonth: false})
+
+      }
+
+      else
+      {
+
+        this.setState({divhidemonth: true})
+      }
     
         
       }
@@ -2125,11 +2127,11 @@ let FinalRequestDelDate1=month1+'/'+this.state.dtgiftgiven.getDate() +'/' +year1
                   ref={c => (this.ppl = c)} 
                   resolveDelay={1000} />  
 </div>
-<br></br>
+<br></br><br></br>
 
 {this.state.divhidemonth == true &&  
 
-<div className={styles.Divsection}> 
+<div className={styles.DivsectionComments}> 
 <b><label className={styles.labelsFonts}>Reviewer Comments</label></b><br/><br/>
 <textarea id="ReviewerComments" value={this.state.ReviewerComments} onChange={this.changeReviewrcomments.bind(this)} className={styles.boxsize1}></textarea>
 </div>
@@ -2138,7 +2140,7 @@ let FinalRequestDelDate1=month1+'/'+this.state.dtgiftgiven.getDate() +'/' +year1
 
 
 </Stack><br></br>
-<PrimaryButton text="Approve" onClick={this.OnBtnClickApprove.bind(this)} styles={stackButtonStyles} className={styles.welcomeImage}/><br></br>
+<PrimaryButton text="Approve" onClick={this.OnBtnClickApprove.bind(this)} styles={stackButtonStyles} className={styles.Approvebutton}/><br></br>
 
 
 </Stack>

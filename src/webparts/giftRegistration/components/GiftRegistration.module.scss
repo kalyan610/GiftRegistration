@@ -30,10 +30,26 @@
   max-width: 420px;
 }
 
+.Approvebutton {
+  width: 20%;
+  max-width: 420px;
+}
+
 .Divsection
 {
 
   padding:10px;
+
+
+}
+
+
+.DivsectionComments
+{
+
+  padding:1px;
+
+  width:80%
 
 
 }
@@ -80,9 +96,9 @@
 
  
 
-  width: 60%;
+  width: 30%;
 
-  height:25px;
+  height:40px;
 
   font-size: medium;
 
@@ -97,7 +113,7 @@
 
  
 
-  width: 50%;
+  width: 25%;
 
   height:15px;
 
@@ -135,6 +151,17 @@
 
  
 }
+
+.labelsFontsComments
+{
+
+  font-size: 14px;
+
+  font-family: Cambria;
+
+ 
+}
+
 
 .coststyle
 
